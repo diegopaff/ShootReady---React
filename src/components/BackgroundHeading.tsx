@@ -1,5 +1,5 @@
 function BackgroundHeading() {
-  return <div>BackgroundHeading</div>;
+  return <h1>ShootReady?</h1>;
 }
 
 export default BackgroundHeading;
