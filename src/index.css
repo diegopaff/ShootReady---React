@@ -107,6 +107,10 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+.item:hover {
+  background-color: #f7f5f1;
+}
+
 .item > input {
   position: absolute;
   left: 50%;
@@ -177,7 +181,8 @@ label > label {
 
 .item > button:hover,
 .item > button:focus {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  color: rgb(232, 74, 59);
 }
 
 .empty-state {
