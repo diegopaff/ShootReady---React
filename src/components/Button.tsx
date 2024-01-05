@@ -1,11 +1,15 @@
 type ButtonProps = {
   children: string | React.ReactNode;
-  type: "primary" | "secondary";
+  buttonType: "primary" | "secondary";
+  onClick?: () => void | ((tipo: boolean) => void);
 };
 
-function Button({ children, type }: ButtonProps) {
+function Button({ children, buttonType, onClick }: ButtonProps) {
   return (
-    <button className={`btn ${type === "secondary" ? "btn--secondary" : ""}`}>
+    <button
+      className={`btn ${buttonType === "secondary" ? "btn--secondary" : ""}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
-import BackgroundHeading from "./components/BackgroundHeading";
-import Footer from "./components/Footer";
-import Header from "./layout/Header";
-import ItemList from "./layout/ItemList";
-import Sidebar from "./layout/Sidebar";
-import { defaultGear } from "./lib/constants";
-import { gearItem } from "./types/types";
+import { gearItem } from "../types/types";
+import { defaultGear } from "../lib/constants";
 
-function App() {
+function GearContextProvider() {
   const gearListFromLocalStorage: gearItem[] = JSON.parse(
     localStorage.getItem("gearList") || ""
   );
@@ -66,33 +61,7 @@ function App() {
   const NumberOfPackedItems = gearList.filter(
     (item: gearItem) => item.packed
   ).length;
-
-  return (
-    <>
-      <BackgroundHeading />
-
-      <main>
-        <Header
-          NumberOfPackedItems={NumberOfPackedItems}
-          NumberOfTotalItems={gearList.length}
-        />
-        <ItemList
-          gearList={gearList}
-          handleDeleteItem={handleDeleteItem}
-          handleToggleItem={handleToggleItem}
-        />
-        <Sidebar
-          handleAddItem={handleAddItem}
-          handleRemoveAllItems={handleRemoveAllItems}
-          handleResetToInitial={handleResetToInitial}
-          handleMarkAllAsComplete={handleMarkAllAsComplete}
-          handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
-        />
-      </main>
-
-      <Footer />
-    </>
-  );
+  return <div>GearContextProvider</div>;
 }
 
-export default App;
+export default GearContextProvider;

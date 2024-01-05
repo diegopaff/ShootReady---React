@@ -1,7 +1,12 @@
-function Counter() {
+type CounterProps = {
+  NumberOfPackedItems: number;
+  NumberOfTotalItems: number;
+};
+
+function Counter({ NumberOfPackedItems, NumberOfTotalItems }: CounterProps) {
   return (
     <p>
-      <b>1</b> / 3 items packed
+      <b>{NumberOfPackedItems}</b> / {NumberOfTotalItems} items packed
     </p>
   );
 }

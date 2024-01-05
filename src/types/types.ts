@@ -9,5 +9,10 @@ export type setGearListType = React.Dispatch<React.SetStateAction<gearItem[]>>;
 
 export type ItemListProps = {
   gearList: gearItem[];
-  setGearList: setGearListType;
+  handleDeleteItem: (id: number) => void;
+  handleToggleItem: (id: number) => void;
+};
+
+export type handleAddItemType = {
+  handleAddItem: (newGear: gearItem) => void;
 };
