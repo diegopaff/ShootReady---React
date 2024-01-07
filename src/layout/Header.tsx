@@ -1,17 +1,11 @@
 import Counter from "../components/Counter";
 import Logo from "../components/Logo";
-type HeaderProps = {
-  NumberOfPackedItems: number;
-  NumberOfTotalItems: number;
-};
-function Header({ NumberOfPackedItems, NumberOfTotalItems }: HeaderProps) {
+
+function Header() {
   return (
     <header>
       <Logo />
-      <Counter
-        NumberOfPackedItems={NumberOfPackedItems}
-        NumberOfTotalItems={NumberOfTotalItems}
-      />
+      <Counter />
     </header>
   );
 }

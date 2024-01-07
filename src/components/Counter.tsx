@@ -1,9 +1,7 @@
-type CounterProps = {
-  NumberOfPackedItems: number;
-  NumberOfTotalItems: number;
-};
+import { useGearContext } from "../lib/hooks";
 
-function Counter({ NumberOfPackedItems, NumberOfTotalItems }: CounterProps) {
+function Counter() {
+  const { NumberOfTotalItems, NumberOfPackedItems } = useGearContext();
   return (
     <p>
       <b>{NumberOfPackedItems}</b> / {NumberOfTotalItems} items packed

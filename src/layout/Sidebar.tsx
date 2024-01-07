@@ -1,30 +1,14 @@
 import AddItemForm from "../components/AddItemForm";
 import ButtonGroup from "../components/ButtonGroup";
-import { gearItem } from "../types/types";
 
-type SideBarProps = {
-  handleAddItem: (newGear: gearItem) => void;
-  handleRemoveAllItems: () => void;
-  handleResetToInitial: () => void;
-  handleMarkAllAsComplete: () => void;
-  handleMarkAllAsIncomplete: () => void;
-};
-function Sidebar({
-  handleAddItem,
-  handleRemoveAllItems,
-  handleResetToInitial,
-  handleMarkAllAsComplete,
-  handleMarkAllAsIncomplete,
-}: SideBarProps) {
+import { useGearContext } from "../lib/hooks";
+
+function Sidebar() {
+  const { handleAddItem } = useGearContext();
   return (
     <div className="sidebar">
       <AddItemForm onAddItem={handleAddItem} />
-      <ButtonGroup
-        handleRemoveAllItems={handleRemoveAllItems}
-        handleResetToInitial={handleResetToInitial}
-        handleMarkAllAsComplete={handleMarkAllAsComplete}
-        handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
-      />
+      <ButtonGroup />
     </div>
   );
 }

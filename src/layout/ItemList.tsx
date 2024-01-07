@@ -1,8 +1,11 @@
-import { ItemListProps, gearItem } from "../types/types";
 import TrashIcon from "../assets/TrashIcon";
 import EmptyView from "../components/EmptyView";
 import Select from "react-select";
+
 import { useMemo, useState } from "react";
+
+import { gearItem } from "../types/types";
+import { useGearContext } from "../lib/hooks";
 
 const sortingOptions = [
   {
@@ -19,13 +22,9 @@ const sortingOptions = [
   },
 ];
 
-function ItemList({
-  gearList,
-  handleDeleteItem,
-  handleToggleItem,
-}: ItemListProps) {
+function ItemList() {
   const [sortBy, setSortBy] = useState("default");
-
+  const { gearList } = useGearContext();
   const sortedItems = useMemo(
     () =>
       // @ts-expect-error -> typescript thinks that it's possibly getting a undefinden but no.
@@ -59,12 +58,7 @@ function ItemList({
       )}
 
       {sortedItems.map((item) => (
-        <Item
-          key={item.id}
-          item={item}
-          handleDeleteItem={handleDeleteItem}
-          handleToggleItem={handleToggleItem}
-        />
+        <Item key={item.id} item={item} />
       ))}
     </ul>
   );
@@ -73,15 +67,8 @@ function ItemList({
 export default ItemList;
 
 // Item component
-function Item({
-  item,
-  handleDeleteItem,
-  handleToggleItem,
-}: {
-  item: gearItem;
-  handleDeleteItem: (id: number) => void;
-  handleToggleItem: (id: number) => void;
-}) {
+function Item({ item }: { item: gearItem }) {
+  const { handleDeleteItem, handleToggleItem } = useGearContext();
   return (
     <li className="item">
       <label>

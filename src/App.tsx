@@ -1,5 +1,6 @@
 import BackgroundHeading from "./components/BackgroundHeading";
 import Footer from "./components/Footer";
+import GearContextProvider from "./context/GearContextProvider";
 import Header from "./layout/Header";
 import ItemList from "./layout/ItemList";
 import Sidebar from "./layout/Sidebar";
@@ -10,22 +11,11 @@ function App() {
       <BackgroundHeading />
 
       <main>
-        <Header
-          NumberOfPackedItems={NumberOfPackedItems}
-          NumberOfTotalItems={gearList.length}
-        />
-        <ItemList
-          gearList={gearList}
-          handleDeleteItem={handleDeleteItem}
-          handleToggleItem={handleToggleItem}
-        />
-        <Sidebar
-          handleAddItem={handleAddItem}
-          handleRemoveAllItems={handleRemoveAllItems}
-          handleResetToInitial={handleResetToInitial}
-          handleMarkAllAsComplete={handleMarkAllAsComplete}
-          handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
-        />
+        <GearContextProvider>
+          <Header />
+          <ItemList />
+          <Sidebar />
+        </GearContextProvider>
       </main>
 
       <Footer />

@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { gearItem } from "../types/types";
+import { ReactNode, createContext, useEffect, useState } from "react";
+import { GearContextType, gearItem } from "../types/types";
 import { defaultGear } from "../lib/constants";
 
-function GearContextProvider() {
+export const GearContext = createContext<GearContextType | null>(null);
+
+function GearContextProvider({ children }: { children?: ReactNode }) {
   const gearListFromLocalStorage: gearItem[] = JSON.parse(
-    localStorage.getItem("gearList") || ""
+    localStorage.getItem("gearList") || "null"
   );
 
   const [gearList, setGearList] = useState(
@@ -61,7 +63,26 @@ function GearContextProvider() {
   const NumberOfPackedItems = gearList.filter(
     (item: gearItem) => item.packed
   ).length;
-  return <div>GearContextProvider</div>;
+
+  const NumberOfTotalItems = gearList.length;
+  return (
+    <GearContext.Provider
+      value={{
+        gearList,
+        handleAddItem,
+        handleDeleteItem,
+        handleToggleItem,
+        handleRemoveAllItems,
+        handleResetToInitial,
+        handleMarkAllAsComplete,
+        handleMarkAllAsIncomplete,
+        NumberOfPackedItems,
+        NumberOfTotalItems,
+      }}
+    >
+      {children}
+    </GearContext.Provider>
+  );
 }
 
 export default GearContextProvider;

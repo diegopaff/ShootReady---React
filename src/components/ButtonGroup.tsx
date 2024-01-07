@@ -1,18 +1,13 @@
 import Button from "./Button";
+import { useGearContext } from "../lib/hooks";
 
-type ButtonGroupProps = {
-  handleRemoveAllItems: () => void;
-  handleResetToInitial: () => void;
-  handleMarkAllAsComplete: () => void;
-  handleMarkAllAsIncomplete: () => void;
-};
-
-function ButtonGroup({
-  handleRemoveAllItems,
-  handleResetToInitial,
-  handleMarkAllAsComplete,
-  handleMarkAllAsIncomplete,
-}: ButtonGroupProps) {
+function ButtonGroup() {
+  const {
+    handleMarkAllAsComplete,
+    handleMarkAllAsIncomplete,
+    handleResetToInitial,
+    handleRemoveAllItems,
+  } = useGearContext();
   return (
     <section className="button-group">
       <Button onClick={handleMarkAllAsComplete} buttonType="secondary">
