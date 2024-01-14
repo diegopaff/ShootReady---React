@@ -19,13 +19,13 @@ export type handleAddItemType = {
 
 export type GearContextType = {
   gearList: gearItem[];
-  handleAddItem: (newGear: gearItem) => void;
-  handleDeleteItem: (id: number) => void;
-  handleToggleItem: (id: number) => void;
-  handleRemoveAllItems: () => void;
-  handleResetToInitial: () => void;
-  handleMarkAllAsComplete: () => void;
-  handleMarkAllAsIncomplete: () => void;
-  NumberOfPackedItems: number;
-  NumberOfTotalItems: number;
+  addItem: (newGear: gearItem) => void;
+  deleteItem: (id: number) => void;
+  toggleItem: (id: number) => void;
+  removeAllItems: () => void;
+  resetToInitial: () => void;
+  markAllAsComplete: () => void;
+  markAllAsIncomplete: () => void;
+  numberOfPackedItems: () => void;
+  numberOfTotalItems: () => void;
 };

@@ -1,7 +1,11 @@
-import { useGearContext } from "../lib/hooks";
+import { useGearStore } from "../stores/gearStore";
 
 function Counter() {
-  const { NumberOfTotalItems, NumberOfPackedItems } = useGearContext();
+  const NumberOfPackedItems = useGearStore(
+    (state) => state.numberOfPackedItems
+  );
+
+  const NumberOfTotalItems = useGearStore((state) => state.numberOfTotalItems);
   return (
     <p>
       <b>{NumberOfPackedItems}</b> / {NumberOfTotalItems} items packed

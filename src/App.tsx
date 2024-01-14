@@ -1,6 +1,5 @@
 import BackgroundHeading from "./components/BackgroundHeading";
 import Footer from "./components/Footer";
-import GearContextProvider from "./context/GearContextProvider";
 import Header from "./layout/Header";
 import ItemList from "./layout/ItemList";
 import Sidebar from "./layout/Sidebar";
@@ -11,11 +10,9 @@ function App() {
       <BackgroundHeading />
 
       <main>
-        <GearContextProvider>
-          <Header />
-          <ItemList />
-          <Sidebar />
-        </GearContextProvider>
+        <Header />
+        <ItemList />
+        <Sidebar />
       </main>
 
       <Footer />

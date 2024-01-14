@@ -1,25 +1,23 @@
 import Button from "./Button";
-import { useGearContext } from "../lib/hooks";
+import { useGearStore } from "../stores/gearStore";
 
 function ButtonGroup() {
-  const {
-    handleMarkAllAsComplete,
-    handleMarkAllAsIncomplete,
-    handleResetToInitial,
-    handleRemoveAllItems,
-  } = useGearContext();
+  const markAllAsComplete = useGearStore((state) => state.markAllAsComplete);
+  const markAllAsInomplete = useGearStore((state) => state.markAllAsIncomplete);
+  const resetToInitial = useGearStore((state) => state.resetToInitial);
+  const removeAllItems = useGearStore((state) => state.removeAllItems);
   return (
     <section className="button-group">
-      <Button onClick={handleMarkAllAsComplete} buttonType="secondary">
+      <Button onClick={markAllAsComplete} buttonType="secondary">
         Mark all as complete
       </Button>
-      <Button onClick={handleMarkAllAsIncomplete} buttonType="secondary">
+      <Button onClick={markAllAsInomplete} buttonType="secondary">
         Mark all as incomplete
       </Button>
-      <Button onClick={handleResetToInitial} buttonType="secondary">
+      <Button onClick={resetToInitial} buttonType="secondary">
         Reset to initial
       </Button>
-      <Button onClick={handleRemoveAllItems} buttonType="secondary">
+      <Button onClick={removeAllItems} buttonType="secondary">
         Remove all items
       </Button>
     </section>
