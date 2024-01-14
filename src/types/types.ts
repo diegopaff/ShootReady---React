@@ -2,6 +2,11 @@ export type gearItem = {
   id: number;
   name: string;
   packed: boolean;
+  category: string;
+};
+
+export type TIndexedCategories = {
+  [key: string]: gearItem[];
 };
 
 export type setGearListType = React.Dispatch<React.SetStateAction<gearItem[]>>;

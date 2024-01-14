@@ -1,13 +1,14 @@
 import TrashIcon from "../assets/TrashIcon";
 import EmptyView from "../components/EmptyView";
-import Select from "react-select";
+//import Select from "react-select";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
-import { gearItem } from "../types/types";
+import { TIndexedCategories, gearItem } from "../types/types";
 import { useGearStore } from "../stores/gearStore";
+import CategoryContainer from "../components/CategoryContainer";
 
-const sortingOptions = [
+/*const sortingOptions = [
   {
     label: "Sort by default",
     value: "default",
@@ -20,48 +21,38 @@ const sortingOptions = [
     label: "Sort by unpacked",
     value: "unpacked",
   },
-];
+];*/
 
 function ItemList() {
-  const [sortBy, setSortBy] = useState("default");
+  //const [sortBy, setSortBy] = useState("default");
 
   const gearList = useGearStore((state) => state.gearList);
-  const sortedItems = useMemo(
-    () =>
-      // @ts-expect-error -> typescript thinks that it's possibly getting a undefinden but no.
-      [...gearList].sort((a, b) => {
-        if (sortBy === "packed") {
-          return Number(b.packed) - Number(a.packed);
-        }
+  const allCategories = useGearStore((state) => state.getAllCategories());
 
-        if (sortBy === "unpacked") {
-          return Number(a.packed) - Number(b.packed);
-        }
-
-        return;
-      }),
-    [gearList, sortBy]
-  );
+  const indexedCategories: TIndexedCategories = useMemo(() => {
+    return gearList.reduce((result, item) => {
+      const { category, ...rest } = item;
+      if (!result[category]) {
+        result[category] = [];
+      }
+      result[category].push(rest);
+      return result;
+    }, {});
+  }, [gearList]);
 
   return (
-    <ul className="item-list">
+    <div className="item-list">
       {gearList.length === 0 && <EmptyView />}
 
-      {gearList.length > 0 && (
-        <section className="sorting">
-          <Select
-            options={sortingOptions}
-            defaultValue={sortingOptions[0]}
-            // @ts-expect-error -> no chance to recieve null
-            onChange={(option) => setSortBy(option.value)}
-          />
-        </section>
-      )}
-
-      {sortedItems.map((item) => (
-        <Item key={item.id} item={item} />
+      {allCategories.map((category) => (
+        <CategoryContainer category={category}>
+          <h3>{category}</h3>
+          {indexedCategories[category].map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </CategoryContainer>
       ))}
-    </ul>
+    </div>
   );
 }
 

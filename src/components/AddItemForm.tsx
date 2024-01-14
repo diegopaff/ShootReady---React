@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import AddIcon from "../assets/AddIcon";
 import Button from "./Button";
 import { gearItem } from "../types/types";
+import CategorySelect from "./CategorySelect";
 
 type onAddItem = {
   onAddItem: (newGear: gearItem) => void;
@@ -9,6 +10,8 @@ type onAddItem = {
 
 function AddItemForm({ onAddItem }: onAddItem) {
   const [text, setText] = useState("");
+  const [category, setCategory] = useState("");
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +33,7 @@ function AddItemForm({ onAddItem }: onAddItem) {
       id: new Date().getTime(),
       name: text,
       packed: false,
+      category: category,
     };
 
     onAddItem(newGear);
@@ -47,6 +51,8 @@ function AddItemForm({ onAddItem }: onAddItem) {
         onChange={handleChangeInput}
         autoFocus={true}
       />
+      <CategorySelect onSelect={setCategory} />
+
       <Button buttonType="primary">
         <AddIcon />
         Add to list

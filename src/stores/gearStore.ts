@@ -1,22 +1,27 @@
 import { create } from "zustand";
-import { defaultGear } from "../lib/constants";
+import { defaultGear, defaultCategories } from "../lib/constants";
 import { gearItem } from "../types/types";
 
 interface IGearStore {
   gearList: gearItem[];
+  categories: string[];
   addItem: (newGear: gearItem) => void;
   deleteItem: (id: number) => void;
   toggleItem: (id: number) => void;
+  addCategory: (category: string) => void;
   removeAllItems: () => void;
   resetToInitial: () => void;
   markAllAsComplete: () => void;
   markAllAsIncomplete: () => void;
   getNumberOfPackedItems: () => number;
   getNumberOfTotalItems: () => number;
+  getAllCategories: () => string[];
+  getCategoryCompleted: (category: string) => boolean;
 }
 
 export const useGearStore = create<IGearStore>((set, get) => ({
   gearList: defaultGear,
+  categories: defaultCategories,
   removeAllItems: () => {
     set(() => ({ gearList: [] }));
   },
@@ -44,6 +49,12 @@ export const useGearStore = create<IGearStore>((set, get) => ({
     set((state) => {
       const newItem = [...state.gearList, newGear];
       return { gearList: newItem };
+    });
+  },
+  addCategory: (category) => {
+    set((state) => {
+      const newCategory = [...state.categories, category];
+      return { categories: newCategory };
     });
   },
   deleteItem: (id: number) => {
@@ -74,5 +85,21 @@ export const useGearStore = create<IGearStore>((set, get) => ({
   getNumberOfTotalItems: () => {
     const state = get();
     return state.gearList.length;
+  },
+  getAllCategories: () => {
+    const state = get();
+    const allCategories: string[] = [];
+    state.gearList.forEach((item) => {
+      allCategories.push(item.category);
+    });
+
+    return [...new Set(allCategories)];
+  },
+  getCategoryCompleted: (category: string) => {
+    const state = get();
+    const itemsWithCategory = state.gearList.filter(
+      (item) => item.category === category
+    );
+    return itemsWithCategory.every((item) => item.packed === true);
   },
 }));
