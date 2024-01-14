@@ -5,7 +5,7 @@ import Select from "react-select";
 import { useMemo, useState } from "react";
 
 import { gearItem } from "../types/types";
-import { useGearContext } from "../lib/hooks";
+import { useGearStore } from "../stores/gearStore";
 
 const sortingOptions = [
   {
@@ -24,7 +24,9 @@ const sortingOptions = [
 
 function ItemList() {
   const [sortBy, setSortBy] = useState("default");
-  const { gearList } = useGearContext();
+  //const { gearList } = useGearContext();
+
+  const gearList = useGearStore((state) => state.gearList);
   const sortedItems = useMemo(
     () =>
       // @ts-expect-error -> typescript thinks that it's possibly getting a undefinden but no.
@@ -68,7 +70,10 @@ export default ItemList;
 
 // Item component
 function Item({ item }: { item: gearItem }) {
-  const { handleDeleteItem, handleToggleItem } = useGearContext();
+  //const { handleDeleteItem, handleToggleItem } = useGearContext();
+
+  const handleDeleteItem = useGearStore((state) => state.deleteItem);
+  const handleToggleItem = useGearStore((state) => state.toggleItem);
   return (
     <li className="item">
       <label>

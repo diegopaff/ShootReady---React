@@ -1,10 +1,11 @@
 import AddItemForm from "../components/AddItemForm";
 import ButtonGroup from "../components/ButtonGroup";
-
-import { useGearContext } from "../lib/hooks";
+import { useGearStore } from "../stores/gearStore";
 
 function Sidebar() {
-  const { handleAddItem } = useGearContext();
+  //const { handleAddItem } = useGearContext();
+
+  const handleAddItem = useGearStore((state) => state.addItem);
   return (
     <div className="sidebar">
       <AddItemForm onAddItem={handleAddItem} />

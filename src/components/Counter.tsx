@@ -1,11 +1,13 @@
 import { useGearStore } from "../stores/gearStore";
 
 function Counter() {
-  const NumberOfPackedItems = useGearStore(
-    (state) => state.numberOfPackedItems
+  const NumberOfPackedItems = useGearStore((state) =>
+    state.getNumberOfPackedItems()
   );
 
-  const NumberOfTotalItems = useGearStore((state) => state.numberOfTotalItems);
+  const NumberOfTotalItems = useGearStore((state) =>
+    state.getNumberOfTotalItems()
+  );
   return (
     <p>
       <b>{NumberOfPackedItems}</b> / {NumberOfTotalItems} items packed
