@@ -24,7 +24,6 @@ const sortingOptions = [
 
 function ItemList() {
   const [sortBy, setSortBy] = useState("default");
-  //const { gearList } = useGearContext();
 
   const gearList = useGearStore((state) => state.gearList);
   const sortedItems = useMemo(

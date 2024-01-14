@@ -23,22 +23,21 @@ export const useGearStore = create<IGearStore>((set, get) => ({
   resetToInitial: () => {
     set(() => ({ gearList: defaultGear }));
   },
-  // TODO markAllAsComplete not workin
   markAllAsComplete: () => {
     set((state) => {
       const allMarked = state.gearList.map((item) => {
         return { ...item, packed: true };
       });
-      return { ...state, items: allMarked };
+      return { gearList: allMarked };
     });
   },
-  // TODO markAllAsIncomplete not workin
   markAllAsIncomplete: () => {
     set((state) => {
       const allUnmarked = state.gearList.map((item) => {
         return { ...item, packed: false };
       });
-      return { ...state, items: allUnmarked };
+
+      return { gearList: allUnmarked };
     });
   },
   addItem: (newGear) => {
@@ -71,10 +70,6 @@ export const useGearStore = create<IGearStore>((set, get) => ({
   getNumberOfPackedItems: () => {
     const state = get();
     return state.gearList.filter((item: gearItem) => item.packed).length;
-
-    /*  set((state) => {
-      return state.gearList.filter((item: gearItem) => item.packed).length;
-    }); */
   },
   getNumberOfTotalItems: () => {
     const state = get();
