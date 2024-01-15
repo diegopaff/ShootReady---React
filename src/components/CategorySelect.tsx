@@ -35,6 +35,7 @@ function CategorySelect({ onSelect }: CategorySelecetProps) {
         {categories.map((category) => (
           <label key={category}>
             <input
+              className="category__input"
               type="radio"
               name="category"
               value={category}

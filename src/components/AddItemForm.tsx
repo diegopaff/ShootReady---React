@@ -29,6 +29,11 @@ function AddItemForm({ onAddItem }: onAddItem) {
       return;
     }
 
+    if (!category) {
+      alert("Please select a category");
+      return;
+    }
+
     const newGear: gearItem = {
       id: new Date().getTime(),
       name: text,

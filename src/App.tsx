@@ -9,7 +9,7 @@ function App() {
     <>
       <BackgroundHeading />
 
-      <main>
+      <main className="completed">
         <Header />
         <ItemList />
         <Sidebar />

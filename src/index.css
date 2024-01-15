@@ -49,8 +49,10 @@ main {
   grid-template-columns: 7fr 4fr;
   grid-template-rows: 59px 1fr;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
-  /* box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
-  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; */
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 header {
@@ -74,6 +76,10 @@ header {
 .counter {
   color: #231d15;
   font-size: 14px;
+}
+
+.counter__completed {
+  color: #3a7d44;
 }
 
 .item-list {
@@ -103,14 +109,13 @@ header {
   display: flex;
   flex-direction: column;
   border: 1px #d3d3d3;
-  border-style: dashed;
+  border-style: solid;
   border-radius: 5px;
   margin: 6px;
 }
 
 .category-completed {
   border-color: #3a7d44;
-  border-width: 2px;
   background-color: rgb(218, 247, 218);
   color: #3a7d44;
 }
@@ -124,7 +129,7 @@ header {
 }
 
 .category__title--completed {
-  color: green;
+  color: #3a7d44;
 }
 
 .category-select-container {
@@ -231,8 +236,12 @@ label > input:hover {
 }
 
 label > input:checked {
-  border-color: #6e6251;
-  background-color: #6e6251;
+  border-color: #3a7d44;
+  background-color: rgb(131, 187, 140);
+}
+
+label > .category__input:checked {
+  background-color: #473a2b;
 }
 
 /* label > input:focus,
@@ -267,6 +276,18 @@ label > label {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+}
+
+.complete-state {
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.611);
 }
 
 h3 {

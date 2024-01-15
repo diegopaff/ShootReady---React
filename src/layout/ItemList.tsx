@@ -1,6 +1,5 @@
 import TrashIcon from "../assets/TrashIcon";
 import EmptyView from "../components/EmptyView";
-//import Select from "react-select";
 
 import { useMemo } from "react";
 
@@ -31,8 +30,8 @@ function ItemList() {
     <div className="item-list">
       {gearList.length === 0 && <EmptyView />}
 
-      {allCategories.map((category) => (
-        <CategoryContainer category={category}>
+      {allCategories.map((category, index) => (
+        <CategoryContainer key={category + index} category={category}>
           {indexedCategories[category].map((item) => (
             <Item key={item.id} item={item} />
           ))}

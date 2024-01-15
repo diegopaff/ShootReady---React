@@ -15,6 +15,7 @@ interface IGearStore {
   markAllAsIncomplete: () => void;
   getNumberOfPackedItems: () => number;
   getNumberOfTotalItems: () => number;
+  isCompleted: () => boolean;
   getAllCategories: () => string[];
   getCategoryCompleted: (category: string) => boolean;
 }
@@ -22,10 +23,12 @@ interface IGearStore {
 export const useGearStore = create<IGearStore>((set, get) => ({
   gearList: defaultGear,
   categories: defaultCategories,
+
   removeAllItems: () => {
     set(() => ({ gearList: [] }));
   },
   resetToInitial: () => {
+    localStorage.removeItem("gearList");
     set(() => ({ gearList: defaultGear }));
   },
   markAllAsComplete: () => {
@@ -48,12 +51,14 @@ export const useGearStore = create<IGearStore>((set, get) => ({
   addItem: (newGear) => {
     set((state) => {
       const newItem = [...state.gearList, newGear];
+      localStorage.setItem("gearList", JSON.stringify(newItem));
       return { gearList: newItem };
     });
   },
   addCategory: (category) => {
     set((state) => {
       const newCategory = [...state.categories, category];
+      localStorage.setItem("categories", JSON.stringify(newCategory));
       return { categories: newCategory };
     });
   },
@@ -85,6 +90,10 @@ export const useGearStore = create<IGearStore>((set, get) => ({
   getNumberOfTotalItems: () => {
     const state = get();
     return state.gearList.length;
+  },
+  isCompleted: () => {
+    const state = get();
+    return state.getNumberOfPackedItems() === state.getNumberOfTotalItems();
   },
   getAllCategories: () => {
     const state = get();
