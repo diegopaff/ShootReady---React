@@ -13,6 +13,13 @@ function CategoryContainer({ children, category }: CategoryContainerProps) {
   const completed = getCategoryCompleted(category);
   return (
     <ul className={`category ${completed ? "category-completed" : ""}`}>
+      <h3
+        className={`category__title ${
+          completed ? "category__title--completed" : ""
+        }`}
+      >
+        {category}
+      </h3>
       {children}
     </ul>
   );

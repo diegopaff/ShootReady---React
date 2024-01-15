@@ -109,17 +109,22 @@ header {
 }
 
 .category-completed {
-  border-color: green;
+  border-color: #3a7d44;
   border-width: 2px;
   background-color: rgb(218, 247, 218);
+  color: #3a7d44;
 }
 
-.category h3 {
+.category__title {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 1rem;
   text-transform: capitalize;
   color: #292218;
+}
+
+.category__title--completed {
+  color: green;
 }
 
 .category-select-container {
@@ -152,10 +157,13 @@ header {
 
 .category-select label {
   display: flex;
+  text-transform: capitalize;
 }
 
 .category-select .new-category {
-  grid-column: 1/ 2;
+  justify-self: center;
+  grid-column: 1/ 3;
+  margin-top: 15px;
 }
 
 .btn-new-category {
