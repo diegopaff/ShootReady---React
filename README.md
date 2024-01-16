@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+# ShootReady
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShootReady is a web application for managing your video shoot preparations. Create and organize your todo list with categories, mark items as completed, and stay organized.
 
-Currently, two official plugins are available:
+![ShootReady](https://i.ibb.co/y4KGyXv/shootready.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deployed App
 
-## Expanding the ESLint configuration
+The app is live and can be accessed at [https://shootready.netlify.app](https://shootready.netlify.app).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![React](https://img.shields.io/badge/react%20zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Features
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Todo List Management:** Add and delete items from your todo list.
+- **Categories:** Create and assign categories to better organize your todo list.
+- **Mark as Completed:** Check off items when they are packed.
+- **All saved in your localstore:** Next time you open the app have all your items and categories.
+
+## Usage
+
+1. Open ShootReady in your web browser.
+2. Add items to your todo list.
+3. Create categories to organize your todo list.
+4. Check off items as completed when you pack them for your video shoot.
+
+## Contributing
+
+Contributions are welcome!
