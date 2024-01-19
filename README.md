@@ -22,6 +22,8 @@ The app is live and can be accessed at [https://shootready.netlify.app](https://
 - **Categories:** Create and assign categories to better organize your todo list.
 - **Mark as Completed:** Check off items when they are packed.
 - **All saved in your localstore:** Next time you open the app have all your items and categories.
+- **Responsive:** You can use it in any device.
+-
 
 ## Usage
 

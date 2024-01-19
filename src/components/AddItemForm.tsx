@@ -8,6 +8,7 @@ type onAddItem = {
   onAddItem: (newGear: gearItem) => void;
 };
 
+//TODO: Fire success toast to indicate that the item was added successfully
 function AddItemForm({ onAddItem }: onAddItem) {
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
