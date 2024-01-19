@@ -344,6 +344,10 @@ form > input::placeholder {
   transition: all 0.2s;
 }
 
+.btn-open {
+  display: none;
+}
+
 .btn:hover {
   background-color: #322618;
 }
@@ -377,6 +381,73 @@ h1 {
   z-index: -1;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+}
+
+@media only screen and (max-width: 768px) {
+  #root {
+    display: block;
+    padding: 0;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  header {
+    height: 100px;
+  }
+
+  .sidebar {
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 100vh;
+    transition: all 0.4s ease;
+  }
+
+  .sidebar-open {
+    display: flex;
+    padding-bottom: 100px;
+    top: 0;
+    transition: all 0.8s ease;
+  }
+
+  .btn-open {
+    background-color: #473a2b;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2rem;
+    position: fixed;
+    top: 90vh;
+    left: 80%;
+    transition: all 0.4s ease;
+  }
+
+  .btn-open-hidden {
+    visibility: hidden;
+  }
+
+  .btn-close {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    left: 90vw;
+    top: 10px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #473a2b;
+  }
+
+  .btn-open:hover {
+    transform: scale(103%);
+  }
 }
 
 @media (max-height: 950px) {
