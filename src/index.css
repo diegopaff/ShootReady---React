@@ -87,7 +87,7 @@ header {
   grid-row: 2 / 3;
   background-color: #fff;
   overflow-y: scroll;
-  scrollbar-color: red orange;
+  scrollbar-color: #473a2b #ebe6e0;
   scrollbar-width: thin;
   position: relative;
 }
