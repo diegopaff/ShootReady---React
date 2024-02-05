@@ -87,7 +87,7 @@ header {
   grid-row: 2 / 3;
   background-color: #fff;
   overflow-y: scroll;
-  scrollbar-color: #473a2b #ebe6e0;
+  scrollbar-color: #a9a7a3 #ebe6e0;
   scrollbar-width: thin;
   position: relative;
 }
@@ -384,6 +384,10 @@ h1 {
 }
 
 @media only screen and (max-width: 768px) {
+  h1 {
+    display: none;
+  }
+
   #root {
     display: block;
     padding: 0;
